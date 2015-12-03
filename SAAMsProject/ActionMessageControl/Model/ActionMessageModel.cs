@@ -55,7 +55,12 @@ namespace SAAMControl.Model
             set { _type = value; }
         }
 
-                 
+
         #endregion
+
+        public ActionMessageModel()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }
