@@ -12,24 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SAAMControl.Model;
+using Telerik.Windows.Controls;
+using WPFTestClientApplication.ViewModels;
 
-namespace UtilitiesProject
+namespace WPFTestClientApplication
 {
     /// <summary>
     /// Interaction logic for TestWindow.xaml
     /// </summary>
-    public partial class TestWindow : Window
+    public partial class MainWindow : RadRibbonWindow
     {
-        public TestWindow()
+        public MainWindow()
         {
             InitializeComponent();
-
-            SAAMControl.Model.ActionMessageModel model = new ActionMessageModel();
-            model.Message = "Test https://www.google.com in textblock";
-            SAAMControl.ActionmessageControl control = new SAAMControl.ActionmessageControl();
-
-            control.Init(model);
-            control.Show();
+            this.DataContext = new MainViewModel();
         }
     }
 }
