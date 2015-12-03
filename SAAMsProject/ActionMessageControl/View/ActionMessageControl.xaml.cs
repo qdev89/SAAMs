@@ -37,15 +37,16 @@ namespace SAAMControl
 
         public void Init(ActionMessageModel model)
         {
-            (this.DataContext as ActionMessageViewModel).MessageModel = model;
-            (this.DataContext as ActionMessageViewModel).MessageModel.ActionMessage = new Action(
+            var dataContext = (this.DataContext as ActionMessageViewModel);
+            dataContext.MessageModel = model;
+            dataContext.MessageModel.ActionMessage = new Action(
                 () =>
                 {
-                   MessageBoxResult messageBoxResult = MessageBox.Show((this.DataContext as ActionMessageViewModel).MessageModel.Message, "Message", MessageBoxButton.OKCancel);
+                   MessageBoxResult messageBoxResult = MessageBox.Show(string.Format("Action Performed: {0}", dataContext.MessageModel.Id), "Message", MessageBoxButton.OKCancel);
 
                     if (messageBoxResult == MessageBoxResult.OK)
                     {
-                        this.Close();
+                        this.Close();                        
                     }
                 });
         }
