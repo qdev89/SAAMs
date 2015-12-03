@@ -1,0 +1,16 @@
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\bin\Debug\UtilitiesProject.exe.config
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\bin\Debug\UtilitiesProject.exe
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\bin\Debug\UtilitiesProject.pdb
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\bin\Debug\ActionMessageControl.dll
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\bin\Debug\ActionMessageControl.pdb
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\obj\Debug\WPFTestClientApplication.csprojResolveAssemblyReference.cache
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\obj\Debug\TestWindow.g.cs
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\obj\Debug\App.g.cs
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\obj\Debug\UtilitiesProject_MarkupCompile.cache
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\obj\Debug\UtilitiesProject_MarkupCompile.lref
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\obj\Debug\TestWindow.baml
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\obj\Debug\UtilitiesProject.g.resources
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\obj\Debug\UtilitiesProject.Properties.Resources.resources
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\obj\Debug\WPFTestClientApplication.csproj.GenerateResource.Cache
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\obj\Debug\UtilitiesProject.exe
+C:\Workspace\SAAM\SAAMs\SAAMsProject\WPFTestClientApplication\obj\Debug\UtilitiesProject.pdb

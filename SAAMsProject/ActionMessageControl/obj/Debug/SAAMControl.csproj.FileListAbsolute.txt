@@ -1,0 +1,11 @@
+C:\Workspace\SAAM\SAAMs\SAAMsProject\ActionMessageControl\bin\Debug\ActionMessageControl.dll.config
+C:\Workspace\SAAM\SAAMs\SAAMsProject\ActionMessageControl\bin\Debug\ActionMessageControl.dll
+C:\Workspace\SAAM\SAAMs\SAAMsProject\ActionMessageControl\bin\Debug\ActionMessageControl.pdb
+C:\Workspace\SAAM\SAAMs\SAAMsProject\ActionMessageControl\obj\Debug\View\ActionMessageControl.g.cs
+C:\Workspace\SAAM\SAAMs\SAAMsProject\ActionMessageControl\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Workspace\SAAM\SAAMs\SAAMsProject\ActionMessageControl\obj\Debug\ActionMessageControl_MarkupCompile.cache
+C:\Workspace\SAAM\SAAMs\SAAMsProject\ActionMessageControl\obj\Debug\ActionMessageControl_MarkupCompile.lref
+C:\Workspace\SAAM\SAAMs\SAAMsProject\ActionMessageControl\obj\Debug\View\ActionMessageControl.baml
+C:\Workspace\SAAM\SAAMs\SAAMsProject\ActionMessageControl\obj\Debug\ActionMessageControl.g.resources
+C:\Workspace\SAAM\SAAMs\SAAMsProject\ActionMessageControl\obj\Debug\ActionMessageControl.dll
+C:\Workspace\SAAM\SAAMs\SAAMsProject\ActionMessageControl\obj\Debug\ActionMessageControl.pdb
