@@ -54,6 +54,7 @@
     <Compile Include="Interfaces\IActionMessage.cs" />
     <Compile Include="Model\ActionMessageModel.cs" />
     <Compile Include="Model\BaseViewModel.cs" />
+    <Compile Include="Model\BoolToCollapsedVisibilityConverter.cs" />
     <Compile Include="Model\RelayCommand.cs" />
     <Compile Include="Model\RichTextBoxHelper.cs" />
     <Compile Include="Program.cs" />

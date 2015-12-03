@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ActionMessageControl"
         xmlns:model="clr-namespace:SAAMControl.Model"
+        xmlns:model1="clr-namespace:ActionMessageControl.Model"
         mc:Ignorable="d"
         Height="Auto" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="True" ShowInTaskbar="False" WindowStyle="None" 
         SizeToContent="Height">
     <Window.Resources>
+        <model1:BoolToCollapsedVisibilityConverter
+            x:Key="BoolToHiddenVis" />
         
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -94,6 +97,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <BitmapImage x:Key="InformaionImageSource" UriSource="../Images/Info-32.png" />
+        <BitmapImage x:Key="WarningImageSource" UriSource="../Images/Warning.png" />
     </Window.Resources>
     <Grid Background="AliceBlue">
         <Grid.RowDefinitions>
@@ -101,7 +107,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Visibility="{Binding CanClose, Converter={StaticResource BoolToHiddenVis}}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -120,11 +126,10 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
-                
             </Grid.ColumnDefinitions>
 
-            <Image Source="/Images/Info-32.png" Grid.Column="0" Height="15" Width="15" Stretch="Uniform" Visibility="{Binding MessageModel.IsInformation}" />
-            <Image Source="/Images/Warning.png" Grid.Column="0" Height="15" Width="15" Stretch="Uniform" Visibility="{Binding MessageModel.IsWarning}" />
+            <Image Source="{StaticResource InformaionImageSource}" Margin="3" Grid.Column="0" Height="15" Width="15" Stretch="Uniform" Visibility="{Binding IsInformation, Converter={StaticResource BoolToHiddenVis}}" />
+            <Image Source="{StaticResource WarningImageSource}" Margin="3"  Grid.Column="0" Height="15" Width="15" Stretch="Uniform" Visibility="{Binding IsWarning, Converter={StaticResource BoolToHiddenVis}}" />
 
             <RichTextBox Grid.Column="1" 
                      Margin="5, 5, 5, 5" 

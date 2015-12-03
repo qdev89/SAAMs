@@ -43,27 +43,27 @@ namespace SAAMControl.Model
                     richTextBox.Document.Blocks.Add(para);
                     richTextBox.Document.Blocks.Remove(richTextBox.Document.Blocks.FirstBlock);
                     richTextBox.Document.Blocks.Add(para);
-
-
+                    
 
                     List<string> linksOnContent = GetLinks(xaml);
                     if (linksOnContent.Count > 0)
                     {
                         foreach (var link in linksOnContent)
                         {
+                            string value = link.Replace("<a>", string.Empty).Replace("</a>", string.Empty);
                             TextRange hyperlinkTextRange = FindWordFromPosition(richTextBox.Document.ContentStart, link);
                             List<Hyperlink> results = new List<Hyperlink>();
-
+                            hyperlinkTextRange.Text = value;
                             Hyperlink hyperlink = new Hyperlink(hyperlinkTextRange.Start, hyperlinkTextRange.End);
-                            hyperlink.RequestNavigate += (sender, args) => Process.Start(link);
+                            hyperlink.RequestNavigate += (sender, args) => Process.Start(value);
                             hyperlink.IsEnabled = true;
-                            string newlink = link;
-                            if (!link.Contains("http"))
-                            {
-                                newlink = "http://" + link;
-                            }
+                            //string newlink = link;
+                            //if (!link.Contains("http"))
+                            //{
+                            //    newlink = "http://" + link;
+                            //}
 
-                            hyperlink.NavigateUri = new Uri(newlink);
+                            //hyperlink.NavigateUri = new Uri(link);
                         }
                     }
                 }
@@ -97,7 +97,7 @@ namespace SAAMControl.Model
         public static List<string> GetLinks(string message)
         {
             List<string> list = new List<string>();
-            Regex urlRx = new Regex(@"((https?|ftp|file)\://|www.)[A-Za-z0-9\.\-]+(/[A-Za-z0-9\?\&\=;\+!'\(\)\*\-\._~%]*)*", RegexOptions.IgnoreCase);
+            Regex urlRx = new Regex(@"<a(?![^>]+href).*?>(.*?)</a>", RegexOptions.IgnoreCase);
 
             MatchCollection matches = urlRx.Matches(message);
             foreach (Match match in matches)

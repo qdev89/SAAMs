@@ -24,20 +24,37 @@ namespace SAAMControl
             InitializeComponent();
             viewModel.RequestClose += (i, ex) =>
             {
+                if (OnClosEventHandler != null)
+                {
+                    OnClosEventHandler.Invoke((this.DataContext as ActionMessageViewModel).MessageModel, null);
+                }
                 this.Close();
             };
             this.DataContext = viewModel;
         }
 
+        public EventHandler OnClosEventHandler;
+
         public void Init(ActionMessageModel model)
         {
             (this.DataContext as ActionMessageViewModel).MessageModel = model;
+            (this.DataContext as ActionMessageViewModel).MessageModel.ActionMessage = new Action(
+                () =>
+                {
+                   MessageBoxResult messageBoxResult = MessageBox.Show((this.DataContext as ActionMessageViewModel).MessageModel.Message, "Message", MessageBoxButton.OKCancel);
+
+                    if (messageBoxResult == MessageBoxResult.OK)
+                    {
+                        this.Close();
+                    }
+                });
         }
 
         private void Hyperlink_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var hyperlink = sender as Hyperlink;
-            Process.Start(hyperlink.NavigateUri.ToString());
+            (this.DataContext as ActionMessageViewModel).MessageModel.ActionMessage();
         }
+
+        public delegate void ChangeListAction();
     }
 }
