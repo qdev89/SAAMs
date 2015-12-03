@@ -153,6 +153,14 @@
             </RichTextBox>
 
         </Grid>
-        
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+
+            <CheckBox Margin="3" IsChecked="{Binding MessageModel.CanStopShowing}"> Do not show this message again</CheckBox>
+        </Grid>
     </Grid>
 </Window>
