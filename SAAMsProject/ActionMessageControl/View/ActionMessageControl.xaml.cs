@@ -24,16 +24,16 @@ namespace SAAMControl
             InitializeComponent();
             viewModel.RequestClose += (i, ex) =>
             {
-                if (OnClosEventHandler != null)
+                if (CloseEventHandler != null)
                 {
-                    OnClosEventHandler.Invoke((this.DataContext as ActionMessageViewModel).MessageModel, null);
+                    CloseEventHandler.Invoke((this.DataContext as ActionMessageViewModel).MessageModel, null);
                 }
                 this.Close();
             };
             this.DataContext = viewModel;
         }
 
-        public EventHandler OnClosEventHandler;
+        public event EventHandler CloseEventHandler;
 
         public void Init(ActionMessageModel model)
         {

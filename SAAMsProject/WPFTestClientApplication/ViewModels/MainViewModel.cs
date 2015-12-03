@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using SAAMControl.Model;
 
@@ -64,8 +65,19 @@ namespace WPFTestClientApplication.ViewModels
         public void OnShow(object parameter)
         {
             SAAMControl.ActionmessageControl control = new SAAMControl.ActionmessageControl();
+            control.CloseEventHandler += ControlCloseEventHandler;
             control.Init(this.SelectedActionMessage);
             control.Show();
+        }
+
+        private void ControlCloseEventHandler(object sender, System.EventArgs e)
+        {
+            var senderActionMessageModel = sender as ActionMessageModel;
+            var existActionMessageModel = ActionMessageList.SingleOrDefault(x => x.Id == senderActionMessageModel.Id);
+            if (existActionMessageModel != null)
+            {
+                existActionMessageModel.CanStopShowing = senderActionMessageModel.CanStopShowing;
+            }
         }
 
         private bool CanExecuteShow(object parameter)

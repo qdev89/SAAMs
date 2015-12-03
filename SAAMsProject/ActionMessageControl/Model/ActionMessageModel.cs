@@ -61,6 +61,8 @@ namespace SAAMControl.Model
         public ActionMessageModel()
         {
             Id = Guid.NewGuid();
+            this.CanClose = true;
+            this.Message = "test <a>click here..</a>";
         }
     }
 }

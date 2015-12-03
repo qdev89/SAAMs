@@ -135,6 +135,11 @@
                         Header="Message"
                         DataMemberBinding="{Binding Message}"
                         Width="Auto" />
+                    <telerik:GridViewDataColumn
+                        IsFilterable="False"
+                        Header="Type"
+                        DataMemberBinding="{Binding Type}"
+                        Width="Auto" />
                     <telerik:GridViewCheckBoxColumn
                         IsFilterable="False"
                         Header="Can Stop Showing"
