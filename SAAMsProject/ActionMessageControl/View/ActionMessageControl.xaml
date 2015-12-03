@@ -1,0 +1,153 @@
+﻿<Window x:Class="SAAMControl.ActionmessageControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ActionMessageControl"
+        xmlns:model="clr-namespace:SAAMControl.Model"
+        mc:Ignorable="d"
+        Height="Auto" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="True" ShowInTaskbar="False" WindowStyle="None" 
+        SizeToContent="Height">
+    <Window.Resources>
+        
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="FloralWhite"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="CloseButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Path x:Name="CloseWindow" SnapsToDevicePixels="True" ToolTip="Close window" Width="20" Height="20" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Stretch="Fill" Fill="#2D2D2D" Data="F1 M 26.9166,22.1667L 37.9999,33.25L 49.0832,22.1668L 53.8332,26.9168L 42.7499,38L 53.8332,49.0834L 49.0833,53.8334L 37.9999,42.75L 26.9166,53.8334L 22.1666,49.0833L 33.25,38L 22.1667,26.9167L 26.9166,22.1667 Z " />
+                            
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="UpdateButtonStyle" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="TextBlock.Foreground" Value="White"/>
+                                <Setter Property="Background" TargetName="Bd" Value="#FF269BB6"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="#80DADADA"/>
+                                <Setter Property="Background" TargetName="Bd" Value="#210080FF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="#90006CD9"/>
+                                <Setter Property="Background" TargetName="Bd" Value="#400080FF"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock TextAlignment="Center" HorizontalAlignment="Center"
+            VerticalAlignment="Center" Grid.Column="0"  FontWeight="Bold" FontSize="13" Margin="40,0,0,0" Foreground="White"
+                                               Name="titleTextBlock"/>
+                <Button x:Name="PART_CloseButton"
+                                                Grid.Column="1" Command="{Binding CloseCommand}"
+                        Style="{DynamicResource CloseButtonStyle}">
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                
+            </Grid.ColumnDefinitions>
+
+            <Image Source="/Images/Info-32.png" Grid.Column="0" Height="15" Width="15" Stretch="Uniform" Visibility="{Binding MessageModel.IsInformation}" />
+            <Image Source="/Images/Warning.png" Grid.Column="0" Height="15" Width="15" Stretch="Uniform" Visibility="{Binding MessageModel.IsWarning}" />
+
+            <RichTextBox Grid.Column="1" 
+                     Margin="5, 5, 5, 5" 
+                     Height="Auto"
+                     x:Name="MessageTextBlock" 
+                     BorderThickness="0"
+                     BorderBrush="{x:Null}"  
+                     VerticalAlignment="Stretch" 
+                     HorizontalAlignment="Stretch"  
+                     HorizontalScrollBarVisibility="Auto" 
+                     VerticalScrollBarVisibility="Auto" 
+                     IsReadOnly="True"
+                     model:RichTextBoxHelper.DocumentXaml="{Binding MessageModel.Message}">
+                <RichTextBox.Resources>
+                    <Style TargetType="Hyperlink">
+                        <Setter Property="Cursor" Value="Hand" />
+                        <!--This Hander will handle click event on Hyperlink on TextBox-->
+                        <EventSetter Event="MouseLeftButtonDown" Handler="Hyperlink_MouseLeftButtonDown" />
+                    </Style>
+                </RichTextBox.Resources>
+            </RichTextBox>
+
+        </Grid>
+        
+    </Grid>
+</Window>
