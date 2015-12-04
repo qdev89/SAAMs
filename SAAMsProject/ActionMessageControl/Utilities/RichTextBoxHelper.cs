@@ -1,16 +1,15 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 
-namespace SAAMControl.Model
+namespace ActionMessageControl.Utilities
 {
+    /// <summary>
+    /// Helper of richtextbox to parse string that contains tag <a> </a> to hyperlink
+    /// </summary>
     public class RichTextBoxHelper : DependencyObject
     {
         public static string GetDocumentXaml(DependencyObject obj)
@@ -57,13 +56,6 @@ namespace SAAMControl.Model
                             Hyperlink hyperlink = new Hyperlink(hyperlinkTextRange.Start, hyperlinkTextRange.End);
                             hyperlink.RequestNavigate += (sender, args) => Process.Start(value);
                             hyperlink.IsEnabled = true;
-                            //string newlink = link;
-                            //if (!link.Contains("http"))
-                            //{
-                            //    newlink = "http://" + link;
-                            //}
-
-                            //hyperlink.NavigateUri = new Uri(link);
                         }
                     }
                 }

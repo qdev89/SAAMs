@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ActionMessageControl"
         xmlns:model="clr-namespace:SAAMControl.Model"
-        xmlns:model1="clr-namespace:ActionMessageControl.Model"
+        xmlns:utilities="clr-namespace:ActionMessageControl.Utilities"
         mc:Ignorable="d"
         Height="Auto" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="True" ShowInTaskbar="False" WindowStyle="None" 
         SizeToContent="Height">
     <Window.Resources>
-        <model1:BoolToCollapsedVisibilityConverter
+        <utilities:BoolToCollapsedVisibilityConverter
             x:Key="BoolToHiddenVis" />
         
         <Style x:Key="FocusVisual">
@@ -142,7 +142,7 @@
                      HorizontalScrollBarVisibility="Auto" 
                      VerticalScrollBarVisibility="Auto" 
                      IsReadOnly="True"
-                     model:RichTextBoxHelper.DocumentXaml="{Binding MessageModel.Message}">
+                     utilities:RichTextBoxHelper.DocumentXaml="{Binding MessageModel.Message}">
                 <RichTextBox.Resources>
                     <Style TargetType="Hyperlink">
                         <Setter Property="Cursor" Value="Hand" />

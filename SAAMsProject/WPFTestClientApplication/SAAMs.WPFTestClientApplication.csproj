@@ -144,9 +144,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ActionMessageControl\SAAMControl.csproj">
+    <ProjectReference Include="..\ActionMessageControl\SAAMs.Control.csproj">
       <Project>{544e1b61-204f-4845-9b2e-f54a3f9a4fe9}</Project>
-      <Name>SAAMControl</Name>
+      <Name>SAAMs.Control</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SAAMs.Contracts\SAAMs.Contracts.csproj">
+      <Project>{b85e25f0-13fd-40e8-89fb-b2a5b1807bab}</Project>
+      <Name>SAAMs.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

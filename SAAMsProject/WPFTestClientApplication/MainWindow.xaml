@@ -60,12 +60,12 @@
                     
                     <TextBlock Grid.Row="1" Grid.Column="0">Type:</TextBlock>
                     <ComboBox Grid.Row="1" Grid.Column="1" SelectedIndex="{Binding NewActionMessage.Type}" >
-                        <ComboBoxItem Content="Information"></ComboBoxItem>
+                        <ComboBoxItem Content="Information" IsSelected="True"></ComboBoxItem>
                         <ComboBoxItem Content="Exclamation"></ComboBoxItem>
                     </ComboBox>
                     
-                    <TextBlock Grid.Row="2" Grid.Column="0">Stop showing:</TextBlock>
-                    <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding NewActionMessage.CanStopShowing}"></CheckBox>
+                    <!--<TextBlock Grid.Row="2" Grid.Column="0">Stop showing:</TextBlock>
+                    <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding NewActionMessage.CanStopShowing}"></CheckBox>-->
 
                     <TextBlock Grid.Row="3" Grid.Column="0">Can close:</TextBlock>
                     <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding NewActionMessage.CanClose}"></CheckBox>
@@ -77,12 +77,12 @@
                         <telerik:RadButton
                     Margin="5"
                     MinWidth="50"
-                    Command="{Binding AddCommand}"
+                    Command="{Binding AddActionMessageCommand}"
                     IsDefault="True">Add</telerik:RadButton>
                         <telerik:RadButton
                     Margin="5"
                     MinWidth="50"
-                    Command="{Binding CancelAddCommand}"
+                    Command="{Binding CancelAddActionMessageCommand}"
                     IsCancel="True">Cancel</telerik:RadButton>
                     </StackPanel>
 
@@ -148,7 +148,7 @@
                     <telerik:GridViewCheckBoxColumn
                         IsFilterable="False"
                         Header="Can Close"
-                        DataMemberBinding="{Binding CanCloseShowing}"
+                        DataMemberBinding="{Binding CanClose}"
                         Width="Auto" />
                 </telerik:RadGridView.Columns>
             </telerik:RadGridView>
@@ -157,12 +157,12 @@
                 <telerik:RadButton
                     Margin="5"
                     MinWidth="50"
-                    Command="{Binding ShowCommand}"
+                    Command="{Binding ShowActionMessageCommand}"
                     IsDefault="True">Show</telerik:RadButton>
                 <!--<telerik:RadButton
                     Margin="5"
                     MinWidth="50"
-                    Command="{Binding CancelAddCommand}"
+                    Command="{Binding CancelAddActionMessageCommand}"
                     IsCancel="True">Cancel</telerik:RadButton>-->
             </StackPanel>
         </Grid>

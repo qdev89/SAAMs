@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SAAMControl.Enumerations;
+using SAAMs.Contracts.Enumerations;
 
-namespace SAAMControl.Interfaces
+namespace SAAMs.Contracts.Models
 {
     public interface IActionMessage
     {

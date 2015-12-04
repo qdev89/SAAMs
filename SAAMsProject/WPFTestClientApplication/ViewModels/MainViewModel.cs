@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Input;
 using SAAMControl.Model;
+using SAAMs.Contracts.Base;
 
 namespace WPFTestClientApplication.ViewModels
 {
@@ -16,6 +17,11 @@ namespace WPFTestClientApplication.ViewModels
             this.NewActionMessage = new ActionMessageModel();
             this.ActionMessageList = new ObservableCollection<ActionMessageModel>();
         }
+
+        #region Properties
+        /// <summary>
+        /// current selected action message in grid view
+        /// </summary>
         public ActionMessageModel SelectedActionMessage
         {
             get { return _selectedActionMessage; }
@@ -25,6 +31,10 @@ namespace WPFTestClientApplication.ViewModels
                 NotifyPropertyChanged("SelectedActionMessage");
             }
         }
+
+        /// <summary>
+        /// the new action message that will be added to grid view
+        /// </summary>
         public ActionMessageModel NewActionMessage
         {
             get { return _newActionMessage; }
@@ -35,6 +45,9 @@ namespace WPFTestClientApplication.ViewModels
             }
         }
 
+        /// <summary>
+        /// The list is bound to grid view
+        /// </summary>
         public ObservableCollection<ActionMessageModel> ActionMessageList
         {
             get { return _actionMessageList; }
@@ -44,12 +57,16 @@ namespace WPFTestClientApplication.ViewModels
                 NotifyPropertyChanged("ActionMessageList");
             }
         }
-
+        #endregion
 
         #region Commands
-        #region ShowCommand Command
+        #region ShowActionMessageCommand Command
         private RelayCommand _showCommand;
-        public ICommand ShowCommand
+
+        /// <summary>
+        /// Show selected Action Message
+        /// </summary>
+        public ICommand ShowActionMessageCommand
         {
             get
             {
@@ -64,31 +81,49 @@ namespace WPFTestClientApplication.ViewModels
 
         public void OnShow(object parameter)
         {
-            SAAMControl.ActionmessageControl control = new SAAMControl.ActionmessageControl();
-            control.CloseEventHandler += ControlCloseEventHandler;
-            control.Init(this.SelectedActionMessage);
-            control.Show();
+            if (!SelectedActionMessage.CanStopShowing)
+            {
+                SAAMControl.ActionmessageControl control = new SAAMControl.ActionmessageControl();
+                control.CloseEventHandler += ControlCloseEventHandler;
+                control.Init(this.SelectedActionMessage);
+                control.Show();
+            }
         }
 
+        /// <summary>
+        /// Handler for close event of Action Message Control
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ControlCloseEventHandler(object sender, System.EventArgs e)
         {
             var senderActionMessageModel = sender as ActionMessageModel;
             var existActionMessageModel = ActionMessageList.SingleOrDefault(x => x.Id == senderActionMessageModel.Id);
             if (existActionMessageModel != null)
             {
+                // update status of can stop showing 
                 existActionMessageModel.CanStopShowing = senderActionMessageModel.CanStopShowing;
             }
         }
 
+        /// <summary>
+        /// Command just can enable if action message has been selected
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         private bool CanExecuteShow(object parameter)
         {
             return this.SelectedActionMessage != null;
         }
 
         #endregion
-        #region AddCommand Command
+        #region AddActionMessageCommand Command
         private RelayCommand _addCommand;
-        public ICommand AddCommand
+
+        /// <summary>
+        /// Command to add an action message
+        /// </summary>
+        public ICommand AddActionMessageCommand
         {
             get
             {
@@ -104,6 +139,7 @@ namespace WPFTestClientApplication.ViewModels
         public void OnAdd(object parameter)
         {
             this.ActionMessageList.Add(NewActionMessage);
+            this.NewActionMessage = new ActionMessageModel();
         }
 
         private bool CanExecuteAdd(object parameter)
@@ -115,7 +151,7 @@ namespace WPFTestClientApplication.ViewModels
 
         #region Cancel Command
         private RelayCommand cancelAddCommand;
-        public ICommand CancelAddCommand
+        public ICommand CancelAddActionMessageCommand
         {
             get
             {

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SAAMControl.Model
+namespace SAAMs.Contracts.Base
 {
     public class BaseViewModel : INotifyPropertyChanged
     {        

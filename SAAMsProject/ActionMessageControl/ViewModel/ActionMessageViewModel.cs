@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using SAAMControl.Enumerations;
 using SAAMControl.Model;
+using SAAMs.Contracts.Base;
+using SAAMs.Contracts.Enumerations;
+using SAAMs.Contracts.Models;
+using SAAMs.Contracts.ViewModels;
 
 namespace SAAMControl.ViewModel
 {
-    public class ActionMessageViewModel : BaseViewModel
+    public class ActionMessageViewModel : BaseViewModel, IActionMessageViewModel
     {
         #region Fields
 
-        private ActionMessageModel _actionMessageModel;
+        private IActionMessage _actionMessageModel;
         private bool _isInformation;
         private bool _isWarning;
         private bool _canClose;
@@ -28,7 +32,11 @@ namespace SAAMControl.ViewModel
         #endregion
 
         #region Properties
-        public ActionMessageModel MessageModel
+
+        /// <summary>
+        /// Current Action Message object that will be bound to view
+        /// </summary>
+        public IActionMessage MessageModel
         {
             get { return _actionMessageModel; }
             set
@@ -38,6 +46,10 @@ namespace SAAMControl.ViewModel
             }
         }
 
+
+        /// <summary>
+        /// If this Action Message is Information type
+        /// </summary>
         public bool IsInformation
         {
             get
@@ -55,6 +67,9 @@ namespace SAAMControl.ViewModel
             }
         }
 
+        /// <summary>
+        /// If this Action Message is Exclamation  type
+        /// </summary>
         public bool IsWarning
         {
             get
@@ -89,7 +104,10 @@ namespace SAAMControl.ViewModel
 
         public bool CanClose
         {
-            get { return MessageModel.CanClose; }            
+            get
+            {
+                return MessageModel.CanClose;
+            }            
         }
 
         public void OnClose(object parameter)
